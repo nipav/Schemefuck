@@ -1,0 +1,7 @@
+* Schemefuck
+
+A brainfuck interpreter implemented in Guile Scheme.
+
+* License
+
+Expat License.  See COPYING file for license details.
