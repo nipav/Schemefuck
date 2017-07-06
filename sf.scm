@@ -4,7 +4,8 @@
 
 ;; See COPYING file for license details.
 
-(define buffer '(0 0 0 0 0 0 0 0 0 0))
+(define buffer-size 10)
+(define buffer (make-list buffer-size '0))
 (define pointer 0)
 
 (define (bf-print-buffer)
