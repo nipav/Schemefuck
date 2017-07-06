@@ -24,7 +24,7 @@
   (list-set! buffer pointer (- (list-ref buffer pointer) 1)))
 
 (define (bf-output)
-  (display (list-ref buffer pointer)))
+  (display (integer->char (list-ref buffer pointer))))
 
 (define (read-file)
   (let ((operator (read-char)))
