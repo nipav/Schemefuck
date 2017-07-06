@@ -2,6 +2,8 @@
 --no-auto-compile -e main -s
 !#
 
+;; See COPYING file for license details.
+
 (define buffer '(0 0 0 0 0 0 0 0 0 0))
 (define pointer 0)
 
