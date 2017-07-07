@@ -4,6 +4,9 @@
 
 ;; See COPYING file for license details.
 
+;; Used later for user input
+(define current-port (current-input-port))
+
 (define buffer-size 10)
 (define buffer (make-list buffer-size '0))
 (define pointer 0)
@@ -27,6 +30,10 @@
 (define (bf-output)
   (display (integer->char (list-ref buffer pointer))))
 
+(define (bf-input)
+  (let ((ascii (char->integer (read-char current-port))))
+    (list-set! buffer pointer ascii)))
+
 (define (read-file)
   (let ((operator (read-char)))
     (unless (eof-object? operator)
@@ -35,7 +42,8 @@
         ((#\<) (bf-dec-pointer!))
         ((#\+) (bf-inc!))
         ((#\-) (bf-dec!))
-        ((#\.) (bf-output)))
+        ((#\.) (bf-output))
+        ((#\,) (bf-input)))
       (read-file))))
 
 ;; TODO: input
@@ -48,6 +56,4 @@
     (newline)
     (exit))
 
-  (bf-print-buffer)
-  (with-input-from-file (cadr args) read-file)
-  (bf-print-buffer))
+  (with-input-from-file (cadr args) read-file))
