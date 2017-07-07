@@ -4,6 +4,8 @@
 
 ;; See COPYING file for license details.
 
+(use-modules (ice-9 rdelim))
+
 ;; Used later for user input
 (define current-port (current-input-port))
 
@@ -34,6 +36,11 @@
   (let ((ascii (char->integer (read-char current-port))))
     (list-set! buffer pointer ascii)))
 
+(define (bf-loop expr)
+  (unless (= (list-ref buffer pointer) 0)
+    (with-input-from-string expr read-file)
+    (bf-loop expr)))
+
 (define (read-file)
   (let ((operator (read-char)))
     (unless (eof-object? operator)
@@ -43,12 +50,10 @@
         ((#\+) (bf-inc!))
         ((#\-) (bf-dec!))
         ((#\.) (bf-output))
-        ((#\,) (bf-input)))
+        ((#\,) (bf-input))
+        ((#\[) (let ((expr (read-delimited "]")))
+                 (bf-loop expr))))
       (read-file))))
-
-;; TODO: input
-
-;; TODO: loop
 
 (define (main args)
   (when (< (length args) 2)
