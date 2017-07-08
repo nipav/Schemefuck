@@ -1,9 +1,13 @@
+-*- outline -*-
+
 Copyright (C) 2017 Niko Pavlinek
 See COPYING file for license details.
 
+* Introduction
+
 A brainfuck interpreter implemented in Guile Scheme.
 
-BRAINFUCK OPERATORS
+* Brainfuck operators
 
   > Increment the pointer.
   < Decrement the pointer.
@@ -14,5 +18,10 @@ BRAINFUCK OPERATORS
   [ Jump forward past the matching ] if the byte at the pointer is zero.
   ] Jump backward to the matching [ unless the byte at the pointer is zero.
 
-Note: the looping operators [ and ] have not been implemented yet.
-You can still write brainfuck programs, but it's a bit more annoying.
+* Usage
+
+  ./sf.scm <brainfuck program>
+
+You can find some example programs under the `programs' directory.
+Please note that some programs might not work with the current
+implementation.
