@@ -1,5 +1,5 @@
-#!/usr/bin/guile \
---no-auto-compile -e main -s
+#!/usr/bin/env sh
+exec guile --no-auto-compile -e main -s "$0" "$@"
 !#
 
 ;; See COPYING file for license details.
