@@ -2,6 +2,6 @@
 
 with pkgs;
 stdenv.mkDerivation {
-  name = "os_vaje";
+  name = "schemefuck";
   buildInputs = [ guile ];
 }
